@@ -1,0 +1,130 @@
+:root {
+    color-scheme: light;
+    --tamna: #142638;
+    --tekst: #23384a;
+    --prigusena: #64788b;
+    --plava: #126a82;
+    --plava-tamna: #0b5369;
+    --svetla: #edf7f7;
+    --linija: #d8e5eb;
+    --senka: 0 24px 70px rgba(20, 45, 61, .14);
+}
+
+* { box-sizing: border-box; }
+
+html {
+    min-height: 100%;
+    background: radial-gradient(circle at 8% 0%, #d8f1ef, transparent 30%),
+                linear-gradient(135deg, #edf5fa, #f4f8fb 60%, #e3f0f1);
+}
+
+body {
+    max-width: 1120px;
+    min-height: calc(100vh - 76px);
+    margin: 38px auto;
+    padding: 44px 52px 56px;
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: var(--senka);
+    color: var(--tekst);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+h1, h2 { color: var(--tamna); line-height: 1.2; }
+h1 { margin: 0 0 25px; font-size: clamp(27px, 3vw, 38px); letter-spacing: -.035em; }
+h2 { margin: 32px 0 16px; font-size: 21px; letter-spacing: -.02em; }
+h1::after { content: ""; display: block; width: 55px; height: 4px; margin-top: 15px; border-radius: 8px; background: #28a4a5; }
+p { margin: 12px 0; }
+strong { color: var(--tamna); }
+a { color: var(--plava); font-weight: 600; text-decoration: none; }
+a:hover { color: var(--plava-tamna); text-decoration: underline; }
+
+.uvod { max-width: 670px; color: var(--prigusena); font-size: 17px; }
+.brze-veze { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0; }
+.brze-veze a, td a {
+    display: inline-block;
+    padding: 9px 14px;
+    border: 1px solid #b9dcdf;
+    border-radius: 10px;
+    background: var(--svetla);
+    text-decoration: none;
+}
+.brze-veze a:hover, td a:hover { background: #dbf0f0; text-decoration: none; }
+
+form:not([action="obrisi_zahtev.php"]):not([action="odjava.php"]) {
+    padding: 22px 25px;
+    border: 1px solid var(--linija);
+    border-radius: 16px;
+    background: #f8fbfc;
+}
+form label { color: var(--tamna); font-weight: 600; }
+input, select, button { font: inherit; }
+input:not([type="hidden"]), select {
+    max-width: 100%;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid #bfcfd8;
+    border-radius: 9px;
+    background: white;
+    color: var(--tamna);
+}
+input:focus, select:focus, button:focus-visible, a:focus-visible {
+    outline: 3px solid rgba(25, 150, 160, .32);
+    outline-offset: 2px;
+}
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] { width: min(100%, 340px); }
+input[type="date"], input[type="time"] { min-width: 160px; }
+button {
+    min-height: 42px;
+    padding: 9px 17px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--plava);
+    color: #fff;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background .15s ease, transform .15s ease;
+}
+button:hover { background: var(--plava-tamna); transform: translateY(-1px); }
+button[type="button"], form[action="odjava.php"] button { background: #e4eff2; color: var(--tamna); }
+button[type="button"]:hover, form[action="odjava.php"] button:hover { background: #d1e6e9; }
+form[action="obrisi_zahtev.php"] button { background: #fff0ef; color: #a43934; border: 1px solid #f0c8c5; }
+form[action="obrisi_zahtev.php"] button:hover { background: #fbdedb; }
+form[action="obrisi_zahtev.php"] { margin: 0; }
+form[action="odjava.php"] { margin: 0 0 22px; }
+
+#ucesnici > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 9px 0; }
+#ucesnici input { width: min(100%, 360px); }
+
+table { width: 100%; margin: 22px 0; border-collapse: collapse; background: white; }
+th, td { padding: 12px 13px; border: 1px solid var(--linija) !important; text-align: left; vertical-align: middle; }
+th { background: #e9f2f6 !important; color: var(--tamna); font-size: 14px; }
+tbody tr:nth-child(even) { background: #f8fbfc; }
+tbody tr:hover { background: #eef7f8; }
+td form { white-space: nowrap; }
+td button { min-height: 35px; padding: 6px 11px; font-size: 14px; }
+td a { padding: 6px 11px; font-size: 14px; }
+
+body.pocetna ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; padding: 0; list-style: none; }
+body.pocetna li { padding: 20px; border: 1px solid var(--linija); border-radius: 14px; background: #f4f9fb; font-weight: 650; }
+body.prijava { max-width: 540px; min-height: auto; margin-top: min(12vh, 105px); }
+body.prijava input { display: block; width: 100%; margin-top: 6px; }
+body.prijava form { margin-top: 25px; }
+body.prijava button { width: 100%; }
+
+@media (max-width: 760px) {
+    body { min-height: calc(100vh - 24px); margin: 12px; padding: 27px 18px; border-radius: 18px; }
+    table { display: block; overflow-x: auto; white-space: nowrap; }
+    form:not([action="obrisi_zahtev.php"]):not([action="odjava.php"]) { padding: 18px; }
+}
+
+@media print {
+    html, body { background: #fff !important; color: #111; }
+    body { max-width: none; min-height: 0; margin: 0 !important; padding: 0 !important; border: 0; border-radius: 0; box-shadow: none; font: 11pt/1.4 Arial, sans-serif; }
+    h1::after { display: none; }
+    button, .komande { display: none !important; }
+    table { display: table; white-space: normal; }
+    tr { break-inside: avoid; }
+    th { background: #eee !important; }
+}
